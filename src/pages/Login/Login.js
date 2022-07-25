@@ -5,6 +5,7 @@ import { authentication } from "../../config/firebase";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Logo from '../../assets/img/logo.png';
 
 function Login({auth, history}) {
   const [email, setEmail] = React.useState();
@@ -65,7 +66,8 @@ function Login({auth, history}) {
           }}
         >
           <CardHeader>
-            <h3>Iniciar Sesión</h3>
+            <img src={Logo} alt="Logo juego" width={130}/>
+            <h4>Iniciar Sesión</h4>
           </CardHeader>
           <CardBody>
             <Input

@@ -54,6 +54,19 @@ function Dashboard(props) {
               </CardBody>
             </Card>
           </Col>
+          <Col lg="4">
+            <Card className="card-chart">
+              <CardHeader>
+                <h5 className="card-category">Total de Palabras Claves</h5>
+                <CardTitle tag="h3">
+                  <i className="tim-icons icon-send text-success" /> 10 
+                </CardTitle>
+              </CardHeader>
+              <CardBody>
+                
+              </CardBody>
+            </Card>
+          </Col>
         </Row>
         
       </div>

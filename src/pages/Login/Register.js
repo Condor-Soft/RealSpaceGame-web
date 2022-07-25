@@ -9,6 +9,7 @@ import { authentication, db } from "../../config/firebase";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 //import { validateEmail } from '../../utils/validations.js';
 import { addDoc, collection } from "firebase/firestore";
+import Logo from '../../assets/img/logo.png';
 
 function Register({auth, history}) {
   const [name, setName] = React.useState();
@@ -89,7 +90,8 @@ function Register({auth, history}) {
           }}
         >
           <CardHeader>
-            <h3>Registro</h3>
+            <img src={Logo} alt="Logo juego" width={130}/>
+            <h4>Registro</h4>
           </CardHeader>
           <CardBody>
             <FormGroup>

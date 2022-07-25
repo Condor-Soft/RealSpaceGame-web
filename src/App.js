@@ -23,6 +23,9 @@ export default function AuthExample() {
         <ProvideAuth>
             <Router>
                 <Switch>
+                    <Route exact path="/">
+                        <Redirect to="/login"/>
+                    </Route>
                     <Route path="/login">
                         <LoginPage />
                     </Route>

@@ -2,6 +2,8 @@
 import Dashboard from "views/Dashboard.js";
 import GeneralQuestions from "views/GeneralQuestions";
 import SortQuestions from "views/SortQuestions";
+import KeyWords from "views/KeyWords";
+import Users from "views/Users";
 import UserProfile from "views/UserProfile";
 
 var routes = [
@@ -30,11 +32,19 @@ var routes = [
     layout: "/admin"
   },
   {
-    path: "/tables",
+    path: "/keywords",
+    name: "KeyWords",
+    rtlName: "",
+    icon: "tim-icons icon-key-25",
+    component: KeyWords,
+    layout: "/admin"
+  },
+  {
+    path: "/users",
     name: "Usuarios",
     rtlName: "",
     icon: "tim-icons icon-single-02",
-    component: SortQuestions,
+    component: Users,
     layout: "/admin"
   },
   {

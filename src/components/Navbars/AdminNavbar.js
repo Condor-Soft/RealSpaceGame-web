@@ -83,13 +83,13 @@ function AdminNavbar(props) {
           </NavbarToggler>
           <Collapse navbar isOpen={collapseOpen}>
             <Nav className="ml-auto" navbar>
-              <InputGroup className="search-bar">
+              <InputGroup className="search-bar" hidden>
                 <Button color="link" onClick={toggleModalSearch}>
                   <i className="tim-icons icon-zoom-split" />
                   <span className="d-lg-none d-md-block">Buscar</span>
                 </Button>
               </InputGroup>
-              <UncontrolledDropdown nav>
+              <UncontrolledDropdown nav hidden>
                 <DropdownToggle
                   caret
                   color="default"
@@ -97,7 +97,7 @@ function AdminNavbar(props) {
                   nav
                 >
                   <div className="notification d-none d-lg-block d-xl-block" />
-                  <i className="tim-icons icon-sound-wave" />
+                  <i className="tim-icons icon-bell-55" />
                   <p className="d-lg-none">Notificaciones</p>
                 </DropdownToggle>
                 <DropdownMenu className="dropdown-navbar" right tag="ul">
@@ -116,7 +116,7 @@ function AdminNavbar(props) {
                   onClick={(e) => e.preventDefault()}
                 >
                   <div className="photo">
-                    <img alt="..." src={require("assets/img/anime3.png")} />
+                    <img alt="..." src={require("assets/img/default-avatar.png")} />
                   </div>
                   <b className="caret d-none d-lg-block d-xl-block" />
                   <p className="d-lg-none">Cerrar Sesión</p>
@@ -125,7 +125,7 @@ function AdminNavbar(props) {
                   <Link tag="li" to="/admin/user-profile">
                     <DropdownItem className="nav-item">Mi Perfil</DropdownItem>
                   </Link>
-                  <NavLink tag="li">
+                  <NavLink tag="li" hidden>
                     <DropdownItem className="nav-item">Configuraciones</DropdownItem>
                   </NavLink>
                   <DropdownItem divider tag="li" />

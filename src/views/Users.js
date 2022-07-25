@@ -11,17 +11,17 @@ import {
 import { db } from '../config/firebase';
 import { collection, getDocs } from "firebase/firestore";
 
-function SortQuestions() {
-  const [questionList, setQuestionList] = React.useState([]);
+function Users() {
+  const [userList, setUserList] = React.useState([]);
 
   React.useEffect(() => {
     async function fetchData() {
       const list = [];
-      const querySnapshot = await getDocs(collection(db, "ClassifierQuestion"));
+      const querySnapshot = await getDocs(collection(db, "Users"));
       querySnapshot.forEach((doc) => {
         list.push(doc.data());
       });
-      setQuestionList(list);
+      setUserList(list);
     }
     fetchData();
   }, []);
@@ -33,24 +33,24 @@ function SortQuestions() {
           <Col md="12">
             <Card>
               <CardHeader>
-                <CardTitle tag="h4">Preguntas Clasificadas</CardTitle>
+                <CardTitle tag="h4">Usuarios</CardTitle>
               </CardHeader>
               <CardBody>
                 <Table className="tablesorter" responsive>
                   <thead className="text-primary">
                     <tr>
                       <th hidden>#</th>
-                      <th>Pregunta</th>
-                      <th className="text-center">Nivel Bloom</th>
+                      <th className="text-center">Nombre</th>
+                      <th className="text-center">Correo</th>
                     </tr>
                   </thead>
                   <tbody>
                     {
-                      questionList.map((q) => 
+                      userList.map((q) => 
                         <tr key={q.id}>
                           <th scope="row" hidden>{q.id}</th>
-                          <td>{q.question}</td>
-                          <td className="text-center">{q.level}</td>
+                          <td className="text-center">{q.name}</td>
+                          <td className="text-center">{q.email}</td>
                         </tr>
                       )
                     }
@@ -65,4 +65,4 @@ function SortQuestions() {
   );
 }
 
-export default SortQuestions;
+export default Users;

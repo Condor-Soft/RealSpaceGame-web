@@ -8,6 +8,7 @@ import { isEmpty } from "lodash";
 import { validateEmail } from '../../utils/validations.js';
 import { sendPasswordResetEmail } from "firebase/auth";
 import { authentication } from "../../config/firebase";
+import Logo from '../../assets/img/logo.png';
 
 function RecoverPassword({history}) {
   const [email, setEmail] = React.useState(null);
@@ -44,7 +45,8 @@ function RecoverPassword({history}) {
             }}
           >
             <CardHeader>
-              <h3>Recuperar Contraseña</h3>
+              <img src={Logo} alt="Logo juego" width={130}/>
+              <h4>Recuperar Contraseña</h4>
             </CardHeader>
             <CardBody>
               <FormGroup>
