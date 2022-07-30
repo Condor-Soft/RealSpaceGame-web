@@ -7,8 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { authentication, db } from "../../config/firebase";
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
-//import { validateEmail } from '../../utils/validations.js';
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import Logo from '../../assets/img/logo.png';
 
 function Register({auth, history}) {
@@ -48,14 +47,13 @@ function Register({auth, history}) {
         updateProfile(authentication.currentUser, {
           displayName: name, 
         });
-        const docRef = addDoc(collection(db, "Users"), {
+        setDoc(doc(db, "Users", user.uid), {
           id: user.uid,
           name: name,
           state: 1,
           email: email,
           profile: 1,
         });
-        console.log(user, docRef.id);
         history.push('/admin');
       })
       .catch((error) => {

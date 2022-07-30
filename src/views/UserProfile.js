@@ -10,12 +10,13 @@ import {
   Form,
   Input,
   Row,
-  Col
+  Col,
 } from "reactstrap";
-import {authentication} from '../config/firebase';
-import { onAuthStateChanged } from "firebase/auth";
-//import { doc, updateDoc } from "firebase/firestore";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { authentication, db } from "../config/firebase";
+import { onAuthStateChanged, updateProfile } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
 
 function UserProfile() {
   const [id, setId] = React.useState(null);
@@ -32,18 +33,34 @@ function UserProfile() {
     });
   }, []);
 
-  const saveProfile = () => {
-    console.log(id);
-  }
+  const saveProfile = async () => {
+    if(!name){
+      toast.info("Debe ingresar un nombre!", {autoClose: 5000});
+    } else {
+      await updateProfile(authentication.currentUser, {
+        displayName: name,
+      }).then(() => {
+        toast.success("Perfil actualizado correctamente!", {autoClose: 5000});
+        const userRef = doc(db, "Users", id);
+        updateDoc(userRef, {
+          name: name
+        });
+      }).catch((error) => {
+        toast.error("Ups, parece que algo salio mal, " + error, {autoClose: 5000});
+      });
+    }
+  };
 
   return (
     <>
+      <ToastContainer />
       <div className="content">
         <Row>
           <Col md="8">
             <Card>
               <CardHeader>
                 <h5 className="title">Perfil de Usuario</h5>
+                <p hidden>{id}</p>
               </CardHeader>
               <CardBody>
                 <Form>
@@ -55,6 +72,7 @@ function UserProfile() {
                           defaultValue={name || ""}
                           placeholder="Nombre"
                           type="text"
+                          onChange={(ev) => setName(ev.target.value)}
                         />
                       </FormGroup>
                     </Col>
@@ -63,14 +81,24 @@ function UserProfile() {
                         <label htmlFor="exampleInputEmail1">
                           Correo electrónico
                         </label>
-                        <Input defaultValue={email || ""} placeholder="Correo electrónico" disabled type="email" />
+                        <Input
+                          defaultValue={email || ""}
+                          placeholder="Correo electrónico"
+                          disabled
+                          type="email"
+                        />
                       </FormGroup>
                     </Col>
                   </Row>
                 </Form>
               </CardBody>
               <CardFooter>
-                <Button className="btn-fill" color="info" type="submit" onClick={saveProfile}>
+                <Button
+                  className="btn-fill"
+                  color="info"
+                  type="submit"
+                  onClick={saveProfile}
+                >
                   Guardar
                 </Button>
               </CardFooter>
