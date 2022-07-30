@@ -33,7 +33,7 @@ function Users() {
           <Col md="12">
             <Card>
               <CardHeader>
-                <CardTitle tag="h4">Usuarios</CardTitle>
+                <CardTitle tag="h3">Usuarios</CardTitle>
               </CardHeader>
               <CardBody>
                 <Table className="tablesorter" responsive>

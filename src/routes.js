@@ -3,6 +3,8 @@ import Dashboard from "views/Dashboard.js";
 import GeneralQuestions from "views/GeneralQuestions";
 import SortQuestions from "views/SortQuestions";
 import KeyWords from "views/KeyWords";
+import Levels from "views/Levels";
+import GameResults from "views/Results";
 import Users from "views/Users";
 import UserProfile from "views/UserProfile";
 
@@ -37,6 +39,22 @@ var routes = [
     rtlName: "",
     icon: "tim-icons icon-key-25",
     component: KeyWords,
+    layout: "/admin"
+  },
+  {
+    path: "/levels",
+    name: "Niveles",
+    rtlName: "",
+    icon: "tim-icons icon-app",
+    component: Levels,
+    layout: "/admin"
+  },
+  {
+    path: "/game-results",
+    name: "Resultados",
+    rtlName: "",
+    icon: "tim-icons icon-trophy",
+    component: GameResults,
     layout: "/admin"
   },
   {
