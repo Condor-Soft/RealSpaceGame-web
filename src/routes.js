@@ -4,6 +4,7 @@ import GeneralQuestions from "views/GeneralQuestions";
 import SortQuestions from "views/SortQuestions";
 import KeyWords from "views/KeyWords";
 import Levels from "views/Levels";
+import Planets from "views/Planets";
 import GameResults from "views/Results";
 import Users from "views/Users";
 import UserProfile from "views/UserProfile";
@@ -50,6 +51,14 @@ var routes = [
     layout: "/admin"
   },
   {
+    path: "/planets",
+    name: "Planetas",
+    rtlName: "",
+    icon: "tim-icons icon-planet",
+    component: Planets,
+    layout: "/admin"
+  },
+  {
     path: "/game-results",
     name: "Resultados",
     rtlName: "",
@@ -69,7 +78,7 @@ var routes = [
     path: "/user-profile",
     name: "Perfil de Usuario",
     rtlName: "",
-    icon: "tim-icons icon-planet",
+    icon: "tim-icons icon-satisfied",
     component: UserProfile,
     layout: "/admin"
   },
